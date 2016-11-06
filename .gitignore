@@ -138,3 +138,4 @@ ENV/
 .idea/
 /test_directory/
 test_directory/
+test_directory2/
