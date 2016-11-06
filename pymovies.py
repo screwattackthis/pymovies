@@ -3,7 +3,6 @@ import os
 
 root = '.'
 for directory, subdirectories, files in os.walk(root):
-    print('Directory: {}'.format(ascii(directory)))
     for file in files:
         try:
             full_path = os.path.join(directory, file)
