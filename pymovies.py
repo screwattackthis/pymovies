@@ -9,5 +9,8 @@ for directory, subdirectories, files in os.walk(root):
         if file_info.st_nlink == 1:
             full_path = os.path.join(directory, file)
             print('\tFound: {}'.format(ascii(full_path)))
-            movie_match = guessit(full_path)
-            print("\tMatched with {}".format(movie_match['title']))
+            try:
+                movie_match = guessit(full_path)
+                print("\tMatched with {}".format(movie_match['title']))
+            except FileNotFoundError:
+                print("File not found, skipping...")
