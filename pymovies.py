@@ -1,8 +1,8 @@
 from guessit import guessit
 import os
 
-source = './source'
-destination = './destination'
+source = './test_directory'
+destination = './test_directory2'
 min_size = 200000000
 video_exts = ['.mkv', '.mp4']
 results = {}
@@ -20,7 +20,10 @@ for directory, subdirectories, files in os.walk(source):
                 results[full_path] = (destination, new_directory, file)
                 confirm = input("\n\tCreate hard link? (Y\\n)\n\t\t{}\n".format(os.path.join(destination, new_directory)))
                 if confirm is 'Y':
-                    os.mkdir(os.path.join(destination, new_directory))
+                    try:
+                        os.mkdir(os.path.join(destination, new_directory))
+                    except FileExistsError:
+                        print('\t\tDirectory already exists.')
                     os.link(full_path, os.path.join(destination, new_directory, file))
                     print('\t\tHard link created succesfully.')
                 else:
