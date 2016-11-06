@@ -136,3 +136,5 @@ ENV/
 .ropeproject
 .gitignore
 .idea/
+/test_directory/
+test_directory/
